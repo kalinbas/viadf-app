@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      <div class="logo"></div>
+      ViaDF
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div #map id="map" style="width:100%; height:100%;"></div>
+  <div style="position:absolute;width:90%;left:5%;top:20px;">
+    <div style="position:relative;">
+      <input (focus)="focusFrom()" #search class="controls locateInput" type="text" placeholder="De donde" style="margin-bottom:10px;">
+      <button class="locateButton" color="secondary" ion-button icon-only clear (click)="locateFrom()">
+        <ion-icon name="locate"></ion-icon>
+      </button>
+    </div>
+    <div style="position:relative;">
+      <input class="controls locateInput" (focus)="focusTo()" #search2 type="text" placeholder="A donde">
+      <button class="locateButton" color="secondary" ion-button icon-only clear (click)="locateTo()" >
+      <ion-icon name="locate"></ion-icon>
+    </button>
+    </div>
+  </div>
+</ion-content>

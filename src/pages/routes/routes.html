@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Rutas cercanas
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <p>En esta lista se muestran todas las lineas del transporte publicó que estan a maximo medio kilometro de su posición actual.</p>
+  <p color="danger" *ngIf="hasLocationProblem">Para ver la lista tiene que activar el GPS en su dispositivo.</p>
+  <button ion-button full (click)="loadList()">Actualizar lista</button>
+  <ion-list>
+    <button ion-item *ngFor="let route of routes" (click)="showDetailMap(route)">
+      <ion-icon [name]="(route.TypeName == 'Metro' || route.TypeName == 'Tren Suburbano'  || route.TypeName == 'Tren Ligero') ? 'train' : 'bus'" item-left></ion-icon>
+      <h2>{{route.TypeName + " " + route.Name}}</h2>
+      <p>{{route.FromName + " a " + route.ToName}}</p>
+    </button>
+  </ion-list>
+</ion-content>

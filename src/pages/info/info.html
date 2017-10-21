@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Información
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+ 
+  <p>ViaDF busca conexiones de toda la red del Metro, Metrobús, Tren Ligero, Trolebús, RTP, Autobús, Microbús, Pumabús y Tren Suburbano en la Ciudad de México y la zona metropolitana.</p>
+
+  <button ion-button full icon-left color="facebook" (click)="openFacebook()">
+    <ion-icon name="logo-facebook"></ion-icon>
+    ViaDF en Facebook
+  </button>
+  <button ion-button full icon-left color="twitter" (click)="openTwitter()">
+    <ion-icon name="logo-twitter"></ion-icon>
+    ViaDF en Twitter
+  </button>
+  <button ion-button full icon-left color="gray" (click)="openWeb()">
+    viadf.com.mx
+  </button>
+  <p>ViaDF es un proyecto personal que he hecho en mi tiempo libre. Por eso estoy feliz por todo tipo de comentarios, sugerencias
+    y ayuda. Agradezco mucho su interés en ViaDF. Gracias tambien al proyecto Mapatón por su esfuerzo y sus datos.</p>
+  
+  <p>Por la falta de una base de datos completa del transporte público en la CDMX, ViaDF depende de sus usuarios para tener información actualizada de las rutas. Por eso puede ser, que en unos casos los resultados no son correctos. Por favor no dudes en contactarnos en ese caso.</p>
+  <p>Hecho con cariño en Mexico y Suiza</p>
+
+  <p>{{ messages.error }}</p>
+</ion-content>

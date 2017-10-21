@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Resultados
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>  
+  <ion-slides>
+    <ion-slide *ngFor="let result of data.Results; let i = index;">
+      <p>
+        <b>
+        ¿Como llegar de <b>{{ fromName }}</b> a <b>{{ toName }}</b>?
+        </b>
+      </p>
+      <p>
+        Tiempo estimado: <b>{{ result.TotalTime.toFixed(0) }} mins</b>
+      </p>
+      <ion-list>
+        <button ion-item *ngFor="let item of result.Items" (click)="showDetailMap(item)">
+          <ion-icon [name]="item.Type.Name == 'Caminado' ? 'walk' : ((item.Type.Name == 'Metro' || item.Type.Name == 'Tren Suburbano'  || item.Type.Name == 'Tren Ligero') ? 'train' : 'bus')" item-left></ion-icon>
+          <h2 *ngIf="item.Route == null">{{ item.Start.Route == null ? "Caminar a " + (item.End.Route ? item.End.Route.Type.Name + " " + (item.End.Name || item.End.Route.Name) : (item.End.Name || item.EndName || "destino")) : (item.End.Route == null ? "Caminar a " + (item.End.Name || item.EndName || "destino") : "Cambiar de " + item.Start.Route.Type.Name + " a " + item.End.Route.Type.Name ) }}</h2>
+          <h2 *ngIf="item.Route != null">Subir al <b>{{ item.Type.Name + " " + item.Route.Name }}</b> {{ " hacía " + item.InDirection }}</h2>
+          <p>{{ item.Time.toFixed(0) }} mins</p>                    
+          <h2 *ngIf="item.Route != null">Bajar en {{ item.End.Name || item.EndName || "revisar en el mapa" }}</h2>
+        </button>
+      </ion-list>
+    </ion-slide>
+  </ion-slides>  
+</ion-content>
