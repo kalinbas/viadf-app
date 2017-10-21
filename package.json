@@ -1,7 +1,7 @@
 {
-  "name": "viadf",
+  "name": "viadf-app",
   "author": "ViaDF",
-  "homepage": "http://viadf.com.mx",
+  "homepage": "https://viadf.mx",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",

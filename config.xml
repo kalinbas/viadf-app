@@ -2,7 +2,7 @@
 <widget id="mx.com.viadf.app" version="1.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>ViaDF</name>
   <description>ViaDF busca conexiones de toda la red del Metro, Metrobús, Tren Ligero, Trolebús, RTP, Autobús, Microbús, Pumabús y Tren Suburbano en la Ciudad de México y la zona metropolitana.</description>
-  <author email="viadf.com.mx@gmail.com" href="http://viadf.com.mx">ViaDF</author>
+  <author email="info@viadf.mx" href="https://viadf.mx">ViaDF</author>
   <content src="index.html"/>
   <access origin="*" allows-arbitrary-loads-in-media="true" allows-arbitrary-loads-in-web-content="true" allows-local-networking="true"/>
   <allow-intent href="http://*/*"/>
