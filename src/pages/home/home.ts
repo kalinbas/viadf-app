@@ -2,12 +2,14 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
 
-import { Geolocation } from 'ionic-native';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { ResultPage } from '../result/result';
 
 import { Api } from '../../providers/api';
 import { Messages } from '../../providers/messages';
+
+
 
 declare var google;
 
@@ -26,7 +28,7 @@ export class HomePage {
   toMarker: any;
   timer: any;
 
-  constructor(public navCtrl: NavController, private api: Api, private messages: Messages) {
+  constructor(public navCtrl: NavController, private api: Api, private messages: Messages, private geoLocation: Geolocation) {
 
   }
 
@@ -85,8 +87,9 @@ export class HomePage {
       }
   }
 
-  doSearch(from, to) {
+  doSearch(from, to) {    
     this.messages.showLoading("Buscando rutas...").then(() => {
+      this.messages.showInterstitialAd();
       this.api.get("service", "search", { de: from.lat() + "," + from.lng(), a: to.lat() + "," + to.lng(), count: 3 }).then(res => {
         //this.api.getFakeSearch().then(res => {
         //this.messages.hideLoading().then(() => {
@@ -102,7 +105,7 @@ export class HomePage {
 
   locateFrom() {
     return this.messages.showLoading("Buscando posición...").then(() => {
-      return Geolocation.getCurrentPosition({ timeout: 5000 }).then((position) => {
+      return this.geoLocation.getCurrentPosition({ timeout: 5000 }).then((position) => {
         return this.messages.hideLoading().then(() => {
           let pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
           return this.selectPosition(true, "su posición actual", pos);
@@ -115,7 +118,7 @@ export class HomePage {
 
   locateTo() {
     return this.messages.showLoading("Buscando posición...").then(() => {
-      return Geolocation.getCurrentPosition({ timeout: 5000 }).then((position) => {
+      return this.geoLocation.getCurrentPosition({ timeout: 5000 }).then((position) => {
         return this.messages.hideLoading().then(() => {
           let pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
           return this.selectPosition(false, "su posición actual", pos);

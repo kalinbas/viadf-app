@@ -5,7 +5,7 @@ import { NavController } from 'ionic-angular';
 import { Api } from '../../providers/api';
 import { Messages } from '../../providers/messages';
 
-import { Geolocation } from 'ionic-native';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { RouteDetailPage } from '../routedetail/routedetail';
 
@@ -19,13 +19,13 @@ export class RoutesPage {
     hasLocationProblem: boolean;
     position: any;
 
-    constructor(public navCtrl: NavController, private api: Api, private messages: Messages) {
+    constructor(public navCtrl: NavController, private api: Api, private messages: Messages, private geoLocation: Geolocation) {
         this.loadList();
     }
 
     loadList() {
         this.messages.showLoading("Buscando rutas cercanas...").then(() => {
-            Geolocation.getCurrentPosition({ timeout: 5000 }).then(position => {
+            this.geoLocation.getCurrentPosition({ timeout: 5000 }).then(position => {
                 this.position = { lat: position.coords.latitude, lng: position.coords.longitude};
                 this.hasLocationProblem = false;
                 //this.api.getFakeCloseRoutes().then(routes => {

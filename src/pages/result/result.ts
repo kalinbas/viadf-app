@@ -19,13 +19,14 @@ export class ResultPage {
   constructor(public navCtrl: NavController, private navParams: NavParams, private messages: Messages) {
     this.data = navParams.get('data');
     this.fromName = navParams.get('fromName');
-    this.toName = navParams.get('toName');
-
+    this.toName = navParams.get('toName'); 
     
   }
 
   ionViewDidLoad() {
-    this.messages.hideLoading();    
+    this.messages.hideLoading().then(() => {
+      //this.messages.showInterstitialAd();
+    })    
   }
 
   showDetailMap(item) {
